@@ -45,7 +45,6 @@ set laststatus=3
 autocmd Filetype lua,javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 set splitbelow
 set splitright
-colorscheme terafox
   '';
   programs.neovim = {
     enable = true;
@@ -53,33 +52,31 @@ colorscheme terafox
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
       # nix
-      vim-nix
-      # theme
-      nightfox-nvim
+      (nvimPlugin vim-nix "")
       # misc
-      nvim-web-devicons
+      (nvimPlugin nvim-web-devicons "")
       (nvimPlugin nvim-tree-lua ''
         lua require'nvim-tree'.setup{}
         nnoremap <leader>t :NvimTreeToggle<CR>
         nnoremap <leader>r :NvimTreeRefresh<CR>
         nnoremap <leader>n :NvimTreeFindFile<CR>
       '')
-      plenary-nvim
+      (nvimPlugin plenary-nvim "")
       (nvimPlugin galaxyline-nvim "lua require('galaxyline.themes.eviline')")
-      nvim-treesitter
+      (nvimPlugin nvim-treesitter "")
       # lsp goodies
-      nvim-lspconfig
-      cmp-nvim-lsp
-      cmp_luasnip
-      nvim-cmp
-      luasnip
-      nvim-lsp-installer
-      lsp-zero
-      rust-tools-nvim
+      (nvimPlugin nvim-lspconfig "")
+      (nvimPlugin cmp-nvim-lsp "")
+      (nvimPlugin cmp_luasnip "")
+      (nvimPlugin nvim-cmp "")
+      (nvimPlugin luasnip "")
+      (nvimPlugin nvim-lsp-installer "")
+      (nvimPlugin lsp-zero "")
+      (nvimPlugin rust-tools-nvim "")
       # general goodies
-      gitsigns-nvim
-      kommentary
-      neogit
+      (nvimPlugin gitsigns-nvim "")
+      (nvimPlugin kommentary "")
+      (nvimPlugin neogit "")
       (nvimPlugin telescope-nvim ''
         nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
         nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
@@ -90,7 +87,14 @@ colorscheme terafox
         lua require("twilight").setup{}
         nnoremap <leader>tw <cmd>Twilight<cr>
       '')
+      # theme
+      (nvimPlugin nightfox-nvim ''
+        colorscheme terafox
+        '')
     ];
+    # extraConfig = ''
+    #   lua require("lua/config")
+    # '';
   };
   xdg.configFile."nvim/lua" = {
       recursive = true;
