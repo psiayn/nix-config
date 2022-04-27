@@ -1,6 +1,6 @@
 with builtins;
 { config, pkgs, ... }: let
-  nvim-lsp-installer = pkgs.vimUtils.buildVimPlugin rec {
+  nvim-lsp-installer-custom = pkgs.vimUtils.buildVimPlugin rec {
     pname = "nvim-lsp-installer";
     version = "0bbc4b5402c63e285ce924fbe3f872cb8a5f6595";
     src = pkgs.fetchFromGitHub {
@@ -70,7 +70,7 @@ set splitright
       (nvimPlugin cmp_luasnip "")
       (nvimPlugin nvim-cmp "")
       (nvimPlugin luasnip "")
-      (nvimPlugin nvim-lsp-installer "")
+      (nvimPlugin nvim-lsp-installer-custom "")
       (nvimPlugin lsp-zero "")
       (nvimPlugin rust-tools-nvim "")
       # general goodies
@@ -92,9 +92,9 @@ set splitright
         colorscheme terafox
         '')
     ];
-    # extraConfig = ''
-    #   lua require("lua/config")
-    # '';
+    extraConfig = ''
+      lua require("init")
+    '';
   };
   xdg.configFile."nvim/lua" = {
       recursive = true;

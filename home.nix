@@ -20,9 +20,6 @@
   home.packages = with pkgs; [
     neofetch
     git
-    tree-sitter
-    nodejs
-    rnix-lsp
     flameshot
     htop
     tmux
@@ -30,6 +27,11 @@
     direnv
     lorri
     tree
+    # nvim + lsp
+    tree-sitter
+    nodejs
+    rnix-lsp
+    xclip
   ];
 
   programs.git = {
