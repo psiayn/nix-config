@@ -89,9 +89,7 @@ in {
       '')
       # theme
       (nvimPlugin nightfox-nvim ''
-        '')
-      (nvimPlugin SpaceCamp ''
-        colorscheme spacecamp
+        colorscheme terafox
         '')
     ];
     extraConfig = ''
