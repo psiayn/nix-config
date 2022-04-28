@@ -34,17 +34,17 @@ with builtins;
   mkBefore = pkgs.lib.mkBefore;
 in {
   xdg.configFile."nvim/init.vim".text = mkBefore ''
-filetype plugin indent on
-syntax enable
-set nu
-set mouse=a
-set colorcolumn=80
-nnoremap <SPACE> <Nop>
-let mapleader=" "
-set laststatus=3
-autocmd Filetype lua,javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-set splitbelow
-set splitright
+    filetype plugin indent on
+    syntax enable
+    set nu
+    set mouse=a
+    set colorcolumn=80
+    nnoremap <SPACE> <Nop>
+    let mapleader=" "
+    set laststatus=3
+    autocmd Filetype lua,javascript,typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    set splitbelow
+    set splitright
   '';
   programs.neovim = {
     enable = true;
@@ -89,7 +89,9 @@ set splitright
       '')
       # theme
       (nvimPlugin nightfox-nvim ''
-        colorscheme terafox
+        '')
+      (nvimPlugin SpaceCamp ''
+        colorscheme spacecamp
         '')
     ];
     extraConfig = ''
