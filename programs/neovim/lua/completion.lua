@@ -1,4 +1,5 @@
 local cmp = require "cmp"
+local luasnip = require "luasnip"
 vim.cmd('set completeopt=menuone,noinsert,noselect')
 cmp.setup {
 	mapping  = {
